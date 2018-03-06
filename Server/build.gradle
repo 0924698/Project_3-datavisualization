@@ -23,6 +23,9 @@ dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:23.0'
     compile 'com.sparkjava:spark-core:2.3'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'  
+    
+    compile 'org.json:json:20171018'  
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }
