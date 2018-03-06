@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="bikeplacement.BikePlacement"/>
+<fullyQualifiedTypeName name="bikesafe.BikeSafe"/>
+<fullyQualifiedTypeName name="java.security.Provider.Service"/>
+<fullyQualifiedTypeName name="spark.Route"/>
+<fullyQualifiedTypeName name="spark.Request"/>
+<fullyQualifiedTypeName name="spark.Response"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="spark.resource.Resource"/>
+<fullyQualifiedTypeName name="main.Resource"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="spark.SparkServer"/>
+<fullyQualifiedTypeName name="spark.Spark"/>
+<fullyQualifiedTypeName name="monumenttheft.MonumentTheft"/>
+</qualifiedTypeNameHistroy>

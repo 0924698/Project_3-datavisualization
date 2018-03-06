@@ -1,0 +1,29 @@
+package main;
+
+import static spark.Spark.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import bikeplacement.BikePlacement;
+import bikesafe.BikeSafe;
+import monumenttheft.MonumentTheft;
+
+
+public class App {
+	private static MonumentTheft monumentTheft = new MonumentTheft();
+	
+	public static void main(String[] args) {
+		port(4567);
+	    
+        get("/", ( request, response) -> "Homepage" );
+        
+        get("/api_MT", (request, response) ->  monumentTheft.getSomething(request, response));
+        get("/api_MT/test", (request, response) ->  monumentTheft.getSomething());
+        get("/api_MT/foo", (request, response) ->  monumentTheft.getSomething());
+        
+    }
+	
+	
+
+}
