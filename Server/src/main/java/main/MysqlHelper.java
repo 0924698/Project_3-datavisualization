@@ -31,9 +31,8 @@ public class MysqlHelper {
 	
 	
 	//example query
-
-	public JSONArray exampleQuery(){
-		String query= "SHOW TABLES";
+	
+	public JSONArray query(String query){
 		JSONArray ret = new JSONArray();
         try {
 			ResultSet rs = conn.prepareStatement(query).executeQuery();
@@ -47,6 +46,10 @@ public class MysqlHelper {
 			e.printStackTrace();
 		}
         return ret;
+	}
+
+	public JSONArray exampleQuery(){
+		return query("SHOW TABLES");
 	}
 	
 	public static JSONArray convertToJSON(ResultSet resultSet)
