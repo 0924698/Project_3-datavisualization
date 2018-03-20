@@ -26,6 +26,14 @@ public class MonumentTheft {
     	return mysql.exampleQuery().toString();
     }
     
+    public String getMomuments(Request req, Response res){
+    	return mysql.query("SELECT * FROM monuments;").toString();
+    }
+    
+    public String getBikeTheft(Request req, Response res){
+    	return mysql.query("SELECT * FROM bikebike_theft;").toString();
+    }
+    
     
 	    
 }

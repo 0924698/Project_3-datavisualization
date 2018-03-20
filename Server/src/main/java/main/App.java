@@ -14,8 +14,9 @@ public class App {
 	private static MonumentTheft monumentTheft = new MonumentTheft();
 	
 	public static void main(String[] args) {
-		port(4570);
+		port(4200);
         get("/", ( request, response) -> "Homepage" );
-        get("/api_MT", (request, response) ->  monumentTheft.getSomething(request, response));
+        get("/api/monuments/all", (request, response) -> monumentTheft.getMomuments(request, response));
+        get("/api/biketheft/all", (request, response) -> monumentTheft.getBikeTheft(request, response));
     }
 }

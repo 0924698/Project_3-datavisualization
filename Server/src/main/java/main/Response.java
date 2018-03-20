@@ -31,7 +31,4 @@ public class Response {
 		this.content = content;
 	}
 	
-	
-	
-	
 }

@@ -32,23 +32,27 @@ public class MysqlHelper {
 	
 	//example query
 	
-	public JSONArray query(String query){
-		JSONArray ret = new JSONArray();
+	public JSONObject query(String query){
+		JSONObject obj;
         try {
 			ResultSet rs = conn.prepareStatement(query).executeQuery();
 			
-			ret= convertToJSON(rs);
+			obj = new JSONObject
+				("{success: true, data:" +  
+				convertToJSON(rs).toString()
+				+ "}");
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			obj = new JSONObject("{success: false, error: '" + e.toString() + "'}");
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			obj = new JSONObject("{success: false, error: '" + e.toString() + "'}");
 			e.printStackTrace();
 		}
-        return ret;
+        return obj;
 	}
 
-	public JSONArray exampleQuery(){
+	public JSONObject exampleQuery(){
 		return query("SHOW TABLES");
 	}
 	

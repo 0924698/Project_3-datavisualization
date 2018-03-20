@@ -19,6 +19,8 @@ public class MonumentTheftMysql {
 		
 			String connectionUrl = "jdbc:mysql://localhost:3306/" + tableName + "?useUnicode=true&characterEncoding=UTF-8&user=" + databaseUser + "&password=" + databasePass;
 	        conn = DriverManager.getConnection(connectionUrl);
+	        
+	        
 		}
 		//} until this
 		//and set your own variables and classnames
