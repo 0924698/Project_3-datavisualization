@@ -1,0 +1,141 @@
+package monumenttheft;
+
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.sql.SQLException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import main.MysqlHelper;
+import spark.Request;
+import spark.Response;
+
+public class MonumentTheft {
+	//Jesse & Jessin
+	String base = "https://maps.googleapis.com/maps/api/geocode/json?";
+
+	String apikey = "AIzaSyCDp_xppf5QvlzcMl5bkf9asDfstg2BO7A";
+	
+	MysqlHelper mysql;
+    
+	
+	
+	public MonumentTheft(){
+    	try {
+			mysql = new MysqlHelper();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    public String getSomething(Request req, Response res){
+    	return mysql.exampleQuery().toString();
+    }
+    
+    public String getMomuments(Request req, Response res){
+    	return mysql.query("SELECT * FROM monuments;").toString();
+    }
+    
+    public String getBikeTheft(Request req, Response res){
+    	return mysql.query("SELECT * FROM bikebike_theft;").toString();
+    }
+    
+    
+    
+    
+    
+    
+    public String updateDatabase(){
+    	JSONObject data = mysql.query("SELECT `voorval nummer` FROM bikebike_theft LIMIT 5;");
+    	System.out.println("data: " + data);
+    	
+    	
+    	JSONArray arr = data.getJSONArray("data");
+    	System.out.println("arr: " + arr.get(0));
+
+//    	//https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+    	
+    	String ret = "";
+    	for(int i = 1; i < arr.length(); i++){
+    		String id =arr.getJSONObject(i).getString("voorval nummer");
+    		JSONArray fullData = mysql.query("SELECT * FROM bikebike_theft WHERE `voorval nummer`='" + id + "';").getJSONArray("data");
+    		System.out.println(fullData);
+    		
+    		String url =  base + convertSpacesToPlus( "address=" + fullData.getString("straat") + "," + fullData.getString("plaats") )+ "&key=" + apikey;
+//    		System.out.println(url);
+//    		updateQuery(obj.getString("voorval nummer"), executePost((url)));
+    	}
+    	return ret;
+    }	
+    
+    String convertSpacesToPlus(String ret){
+    	String x = ret.replaceAll("\\s+","+").toLowerCase();
+    	return x;
+    }
+    
+    void updateQuery(String id, String json){
+    	
+    	JSONArray arr = new JSONObject(json).getJSONArray("results");    	
+    	JSONObject locationObj= (JSONObject) arr.getJSONObject(0).getJSONObject("geometry").getJSONObject("location");
+    	System.out.println(locationObj.getFloat("lat"));
+    	System.out.println(locationObj.getFloat("lng"));
+    	
+    	String query = "UPDATE bikebike_theft"+
+    					" SET lat=" + locationObj.getFloat("lat") +
+    					", `long`="+ locationObj.getFloat("lng") + 
+    					" WHERE `Voorval nummer`='" + id + "';"	;
+    	System.out.println(query);
+    	mysql.editQuery(query);
+    }
+    
+    
+    
+    public String executePost(String targetURL) {
+    	  HttpURLConnection connection = null;
+
+    	  try {
+    	    //Create connection
+    	    URL url = new URL(targetURL);
+    	    connection = (HttpURLConnection) url.openConnection();
+    	    connection.setRequestMethod("GET");
+    	    connection.setRequestProperty("Content-Type", 
+    	        "application/x-www-form-urlencoded");
+
+
+    	    connection.setUseCaches(false);
+    	    connection.setDoOutput(true);
+    	    
+    	    //Send request
+    	    DataOutputStream wr = new DataOutputStream (
+    	        connection.getOutputStream());
+    	    wr.close();
+
+    	    //Get Response  
+    	    InputStream is = connection.getInputStream();
+    	    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+    	    StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
+    	    String line;
+    	    while ((line = rd.readLine()) != null) {
+    	      response.append(line);
+    	      response.append('\r');
+    	    }
+    	    rd.close();
+    	    System.out.println(response);
+    	    return response.toString();
+    	  } catch (Exception e) {
+    	    e.printStackTrace();
+    	    return null;
+    	  } finally {
+    	    if (connection != null) {
+    	      connection.disconnect();
+    	    }
+    	  }
+    	}
+	    
+}

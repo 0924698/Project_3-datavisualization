@@ -18,8 +18,6 @@ public class MysqlHelper {
 	
 	private Connection conn;
 	
-	
-	
 	public MysqlHelper() throws SQLException {
 		String connectionUrl = "jdbc:mysql://localhost:3306/" + tableName + "?useUnicode=true&characterEncoding=UTF-8&user=" + databaseUser + "&password=" + databasePass;
         conn = DriverManager.getConnection(connectionUrl);
@@ -29,18 +27,16 @@ public class MysqlHelper {
 		return conn;
 	}
 	
-	
-	//example query
-	
 	public JSONObject query(String query){
 		JSONObject obj;
         try {
 			ResultSet rs = conn.prepareStatement(query).executeQuery();
-			
+
 			obj = new JSONObject
-				("{success: true, data:" +  
+				("{data : " +  
 				convertToJSON(rs).toString()
 				+ "}");
+			System.out.println(obj);
 			
 		} catch (SQLException e) {
 			obj = new JSONObject("{success: false, error: '" + e.toString() + "'}");
@@ -50,6 +46,17 @@ public class MysqlHelper {
 			e.printStackTrace();
 		}
         return obj;
+	}
+	
+	public int editQuery(String query){
+		JSONObject obj;
+		try{
+			int i = conn.prepareStatement(query).executeUpdate();
+			return i;
+		}catch (SQLException e){
+			e.printStackTrace();
+			return -1;
+		}
 	}
 
 	public JSONObject exampleQuery(){
