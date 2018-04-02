@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <link rel="stylesheet" href="Css/toggle.css">
+    <link rel="stylesheet" href="Css/style.css">
+    <script src="Js/jquery.js"></script>
+  </head>
+  <body>
+    <section class="frontpage">
+      <div class="triangle">
+
+          <a href="index.html"><div class="logo"></div></a>
+      </div>
+    </section>
+    <div id="frame">
+      <ul>
+          <li class="labels"><h4>BikeSafe</h4></li>
+          <li><p>Monuments:</p></li>
+          <li><div class="onoffswitch"><input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onchange="clearMarkers()" checked><label class="onoffswitch-label" for="myonoffswitch"><span class="onoffswitch-inner"></span><span class="onoffswitch-switch"></span></label></div></li>
+          <li><p>Biketheft:</p></li>
+          <li><p>Malebikes:</p></li>
+          <li><div id="radios">
+              <input id="Heren" name="options" onchange="toggleHeren()" type="checkbox">
+          </div></li>
+          <li><p>Otherbikes:</p></li>
+          <li><div id="radios">
+              <input id="neutraal" name="options" onchange="toggleNeutraal()" type="checkbox">
+          </div></li>
+          <li><p>Femalebikes:</p></li>
+          <li><div id="radios">
+              <input id="Dames" name="options" onchange="toggleDames()" type="checkbox">
+          </div></li>
+      </ul>
+    </div>
+
+    <div id="map"></div>
+    <script src="Js/maps.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyD6H8S0Tv6itAkRx2-ybFw7XLGgV_ocoFw&callback=initMap"
+    type="text/javascript">
+    </script>
+
+    <footer> <div class="footertxt">Made by students from Hogeschool Rotterdam</div></footer>
+  </body>
+</html>

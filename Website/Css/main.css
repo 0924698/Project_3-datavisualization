@@ -1,0 +1,96 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Trebuchet, Arial, sans-serif;
+    overflow: hidden;
+}
+
+header {
+    height: 9%;
+    width: 100%;
+    background-color: white;
+}
+
+section {
+    height: 91%;
+    width: 100%;
+}
+
+div {
+    float: left;
+    height: 100%;
+    width: calc(100% / 3);
+    background-color: white;
+}
+
+.link_image {
+    width: 100%;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+
+.logo {
+    height: 100%;
+    width: 15%;
+    align-self: center;
+    margin-left:  45%;
+}
+
+h1 {
+    float: right;
+    color: white;
+    font-size: 30px;
+    margin-top: -70px;
+    margin-right: 15px;
+    border-top: white 1px solid;
+    padding: 0 5px;
+    position: relative;
+}
+
+h2 {
+    margin: 5px 0px 0 10px;
+    position: absolute;
+    text-decoration: underline;
+}
+h4 {
+    margin: 0;
+    position: absolute;
+    top: 30px;;
+    left: 20px;
+    margin-left:  45%;
+}
+
+p {
+    position: absolute;
+    font-style: italic;
+    font-size: 24px;
+    width: 27%;
+    padding: 390px 31px 150px 50px;
+    text-align: right;
+    margin: 0;
+    z-index: 100000;
+    opacity: 0;
+    cursor: pointer;
+    color: white;
+    transition: 0.4s ease-in;
+}
+
+.mt {
+    background-color: rgba(35, 134, 255, 0.63);
+}
+
+.bs {
+    background-color: rgba(175, 255, 47, 0.616);
+}
+
+.bt {
+    background-color: rgba(255, 0, 0, 0.623);
+}
+
+p:hover {
+    opacity: 0.7;
+}
+
