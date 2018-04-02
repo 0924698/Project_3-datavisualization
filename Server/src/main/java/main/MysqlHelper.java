@@ -13,7 +13,7 @@ public class MysqlHelper {
 	
 	private String databaseUrl = "localhost:3306";
 	private String databaseUser = "root";
-	private String databasePass = "jessinrodenburg";
+	private String databasePass = "";
 	private String tableName = "Datavisualisatie";
 	
 	private Connection conn;
