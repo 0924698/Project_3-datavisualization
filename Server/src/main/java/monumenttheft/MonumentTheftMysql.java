@@ -8,7 +8,7 @@ public class MonumentTheftMysql {
 	//copy paste this:{
 		private String databaseUrl = "localhost:3306";
 		private String databaseUser = "root";
-		private String databasePass = "";
+		private String databasePass = "jessinrodenburg";
 		private String tableName = "Datavisualisatie";
 		
 		private Connection conn;
