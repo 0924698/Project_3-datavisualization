@@ -12,7 +12,6 @@ import monumenttheft.MonumentTheft;
 
 public class App {
 	private static MonumentTheft monumentTheft = new MonumentTheft();
-	private static BikeSafe bikeSafe = new BikeSafe();
 	
 	
 	
@@ -44,10 +43,7 @@ public class App {
         get("/", ( request, response) -> "Homepage" );
         get("/api/monuments/all", (request, response) -> monumentTheft.getMomuments(request, response));
         get("/api/biketheft/all", (request, response) -> monumentTheft.getBikeTheft(request, response));
-        get("/api/fietstrommels/all", (request, response) -> bikeSafe.getFietstrommels(request, response));
-        get("/api/fietstrommels/all", (request, response) -> bikeSafe.getFietstrommels(request, response));
-        //bikeSafe.updateDatabase();
-       //monumentTheft.updateDatabase();
+//       monumentTheft.updateDatabase();
     }
 	
 	

@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 
 public class BikesafeMysql {
-	private String databaseURL = "localhost:3306";
+	private String databaseURL = "localhost:3307";
 	private String databaseUser = "root";
 	private String databasePass = "";
 	private String tableName = "Datavisualisatie";
@@ -15,7 +15,7 @@ public class BikesafeMysql {
 	
 	public BikesafeMysql() throws SQLException {
 		
-		String connectionUrl = "jdbc:mysql://localhost:3306/" + tableName + "?useUnicode=true&characterEncoding=UTF-8&user=" + databaseUser + "&password=" + databasePass;
+		String connectionUrl = "jdbc:mysql://localhost:3307/" + tableName + "?useUnicode=true&characterEncoding=UTF-8&user=" + databaseUser + "&password=" + databasePass;
         conn = DriverManager.getConnection(connectionUrl);
 	}
 }
